@@ -7,7 +7,7 @@
    ============================================= */
 
 const REDIRECT_URL = "https://www.google.com"; // z.B. "open.html" oder "https://deineuni.de/modulwahl"
-const TARGET_UTC_MS = berlinInstantFromWall(2025, 9, 7, 12, 21, 0);
+const TARGET_UTC_MS = berlinInstantFromWall(2025, 9, 10, 0, 0, 0);
 
 // Utility: Berlin-Offset ermitteln (DST-sicher)
 function berlinOffsetMs(atDate){
