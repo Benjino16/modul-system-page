@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modulwahl – Countdown</title>
+  <meta name="description" content="Countdown bis zur Modulwahl.">
+  <meta name="color-scheme" content="light only">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="card" role="region" aria-labelledby="headline">
+      <div class="blob" aria-hidden="true"></div>
+      <div class="blob-2" aria-hidden="true"></div>
+      <div class="ring" aria-hidden="true"></div>
+
+      <h1 id="headline">Modulwahl noch geschlossen</h1>
+      <p class="subtitle">Countdown bis <strong>10.09.2025, 00:00&nbsp;Uhr</strong> (Europe/Berlin)</p>
+
+      <div class="counter" aria-live="polite" aria-atomic="true">
+        <div class="unit"><div class="value" id="days">–</div><div class="label">Tage</div></div>
+        <div class="unit"><div class="value" id="hours">–</div><div class="label">Stunden</div></div>
+        <div class="unit"><div class="value" id="minutes">–</div><div class="label">Minuten</div></div>
+        <div class="unit"><div class="value" id="seconds">–</div><div class="label">Sekunden</div></div>
+      </div>
+
+      <p class="note" id="statusNote" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
