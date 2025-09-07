@@ -24,11 +24,14 @@
       <h1 id="headline">Modulwahl noch geschlossen</h1>
       <p class="subtitle">Countdown bis <strong>10.09.2025, 00:00&nbsp;Uhr</strong> (Europe/Berlin)</p>
 
-      <div class="counter" aria-live="polite" aria-atomic="true">
-        <div class="unit"><div class="value" id="days">–</div><div class="label">Tage</div></div>
-        <div class="unit"><div class="value" id="hours">–</div><div class="label">Stunden</div></div>
-        <div class="unit"><div class="value" id="minutes">–</div><div class="label">Minuten</div></div>
-        <div class="unit"><div class="value" id="seconds">–</div><div class="label">Sekunden</div></div>
+      <!-- Neu: Wrapper erlaubt im Notfall horizontales Scrollen, bleibt aber standardmäßig zentriert -->
+      <div class="counter-wrap">
+        <div class="counter" aria-live="polite" aria-atomic="true">
+          <div class="unit"><div class="value" id="days">–</div><div class="label">Tage</div></div>
+          <div class="unit"><div class="value" id="hours">–</div><div class="label">Stunden</div></div>
+          <div class="unit"><div class="value" id="minutes">–</div><div class="label">Minuten</div></div>
+          <div class="unit"><div class="value" id="seconds">–</div><div class="label">Sekunden</div></div>
+        </div>
       </div>
 
       <p class="note" id="statusNote" aria-live="polite"></p>

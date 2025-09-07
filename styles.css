@@ -8,6 +8,7 @@
   --glass: rgba(255,255,255,0.55);
   --shadow: 0 10px 30px rgba(38,50,56,0.12);
   --radius: 22px;
+  --tap: 44px;
 }
 
 html, body {
@@ -21,12 +22,20 @@ html, body {
     var(--bg-1);
   color: var(--ink);
   font-family: "Quicksand", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
+
+* { -webkit-tap-highlight-color: transparent; }
 
 body::before{
   content:"";
   position: fixed; inset:0;
-  background-image: url("data:image/svg+xml;utf8,    <svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'>      <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0 0 0 0 0.06'/></feComponentTransfer></filter>      <rect width='100%' height='100%' filter='url(%23n)'/>    </svg>");
+  background-image: url("data:image/svg+xml;utf8,\
+    <svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'>\
+      <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0 0 0 0 0.06'/></feComponentTransfer></filter>\
+      <rect width='100%' height='100%' filter='url(%23n)'/>\
+    </svg>");
   opacity:.4;
   pointer-events:none;
   mix-blend-mode: multiply;
@@ -37,7 +46,7 @@ body::before{
   height: 100%;
   display: grid;
   place-items: center;
-  padding: clamp(16px, 4vw, 48px);
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
 }
 
 .card{
@@ -91,7 +100,7 @@ body::before{
 h1{
   font-family: "Cormorant Garamond", serif;
   font-weight: 700;
-  font-size: clamp(32px, 6vw, 72px);
+  font-size: clamp(28px, 6vw, 72px);
   letter-spacing: .02em;
   margin: 0 0 .2em 0;
   color: var(--ink);
@@ -100,27 +109,38 @@ h1{
 .subtitle{
   font-family: "Cormorant Garamond", serif;
   font-weight: 500;
-  font-size: clamp(16px, 2.2vw, 22px);
+  font-size: clamp(14px, 2.8vw, 22px);
   color: #4d5b57;
-  margin-bottom: clamp(16px, 2.5vw, 20px);
+  margin-bottom: clamp(14px, 2.5vw, 20px);
 }
 
+/* --------- WICHTIG: Counter immer nebeneinander --------- */
+.counter-wrap{
+  width: 100%;
+  overflow-x: auto;           /* Falls es zu eng wird, bleibt es eine Reihe und kann notfalls scrollen */
+  -webkit-overflow-scrolling: touch;
+}
 .counter{
-  display: grid;
-  grid-template-columns: repeat(4, minmax(120px, 1fr));
-  gap: clamp(10px, 2vw, 16px);
-  margin-top: clamp(10px, 2vw, 20px);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: clamp(8px, 2.5vw, 16px);
+  padding: 2px;               /* kleiner Innenpuffer, falls Scrollbar erscheint */
+  flex-wrap: nowrap;          /* nie umbrechen */
 }
 .unit{
+  flex: 1 1 0;
+  min-width: 0;               /* erlaubt Schrumpfen */
   background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.55));
   border: 1px solid rgba(38,50,56,0.08);
   border-radius: 18px;
-  padding: clamp(12px, 2.5vw, 20px);
+  padding: clamp(10px, 2.5vw, 20px);
   box-shadow: var(--shadow);
 }
 .value{
   font-variant-numeric: tabular-nums;
-  font-size: clamp(36px, 6vw, 62px);
+  /* skaliert dynamisch mit Viewport-Breite, bleibt aber nach oben groß */
+  font-size: clamp(28px, 10vw, 62px);
   font-weight: 700;
   line-height: 1;
   color: var(--accent);
@@ -129,53 +149,34 @@ h1{
   margin-top: 6px;
   letter-spacing: .08em;
   text-transform: uppercase;
-  font-size: clamp(11px, 1.6vw, 13px);
+  font-size: clamp(10px, 3vw, 13px);
   color: #5c6b68;
 }
 
 .note{
-  margin-top: clamp(18px, 2.5vw, 26px);
-  font-size: 14px;
+  margin-top: clamp(16px, 2.5vw, 26px);
+  font-size: clamp(12px, 2.6vw, 14px);
   color: #5f6467;
 }
 
-@media (max-width: 640px){
-  .counter{ grid-template-columns: repeat(2, 1fr); }
-}
-
-
-/* ===== Mobile & Accessibility Optimierungen ===== */
-:root{
-  --tap: 44px; /* Mindest-Tap-Ziel nach Apple/Google Guidelines */
-}
-
-* { -webkit-tap-highlight-color: transparent; }
-
-/* Bessere Lesbarkeit auf mobilen Displays */
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-
-.shell { padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
-
-/* Performance: Effekte auf schwächeren Geräten reduzieren */
+/* Mobile Feinschliff */
 @media (max-width: 480px){
-  body { overflow: auto; } /* Falls Tastatur/Adressleiste schrumpft */
+  body { overflow: auto; }
   .card { padding: 20px; border-radius: 18px; }
-  .counter{ grid-template-columns: repeat(2, minmax(120px,1fr)); gap: 12px; }
-  .value{ font-size: clamp(34px, 12vw, 56px); }
-  .label{ font-size: 12px; }
   .blob, .blob-2{ filter: blur(18px); opacity: .32; }
   .ring{ box-shadow: inset 0 0 0 28px rgba(255,255,255,0.32), inset 0 0 0 56px rgba(138,111,168,0.10); }
-  body::before{ opacity: .25; } /* weniger Körnung */
+  body::before{ opacity: .25; }
 }
 
-/* Sehr kleine Geräte */
+/* Sehr kleine Geräte – alles bleibt eine Reihe, nur enger */
 @media (max-width: 360px){
-  .counter{ grid-template-columns: 1fr 1fr; }
-  .unit{ padding: 12px; }
-  .value{ font-size: clamp(30px, 13vw, 48px); }
+  .counter{ gap: 8px; }
+  .unit{ padding: 10px; border-radius: 16px; }
+  .value{ font-size: clamp(24px, 12vw, 48px); }
+  .label{ font-size: 10px; }
 }
 
-/* Bewegungen reduzieren, wenn gewünscht */
+/* Bewegungen reduzieren */
 @media (prefers-reduced-motion: reduce){
   * { animation: none !important; transition: none !important; }
   .blob, .blob-2, .ring{ filter: blur(12px); opacity: .28; }
