@@ -12,14 +12,14 @@
     .content{display:grid;place-items:center;height:100vh;text-align:center;padding:24px}
     .content h1{font-size:clamp(32px,6vw,64px)}
     .content p{max-width:60ch;color:#4d5b57}
-    .btn{display:inline-block;margin-top:18px;padding:12px 18px;border-radius:14px;border:1px solid rgba(38,50,56,0.12);box-shadow:var(--shadow);background:white;color:var(--accent);text-decoration:none;font-weight:600}
+    .btn{display:inline-block;margin-top:18px;padding:14px 20px;min-height:var(--tap);min-width:calc(var(--tap)*3);border-radius:16px;border:1px solid rgba(38,50,56,0.12);box-shadow:var(--shadow);background:white;color:var(--accent);text-decoration:none;font-weight:600}
   </style>
 </head>
 <body>
   <div class="blob" aria-hidden="true"></div>
   <div class="blob-2" aria-hidden="true"></div>
   <div class="ring" aria-hidden="true"></div>
-  <main class="content">
+  <main class="content" style="padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));">
     <div>
       <h1>Modulwahl geöffnet!</h1>
       <p>Die Frist wurde erreicht. Hier kannst du nun mit der Modulwahl fortfahren.</p>
