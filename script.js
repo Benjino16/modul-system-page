@@ -6,7 +6,7 @@
    - Weiterleitungs-URL anpassen: REDIRECT_URL
    ============================================= */
 
-const REDIRECT_URL = "https://www.google.com"; // z.B. "open.html" oder "https://deineuni.de/modulwahl"
+const REDIRECT_URL = "https://benjino.limesurvey.net/389524?lang=de-easy"; // z.B. "open.html" oder "https://deineuni.de/modulwahl"
 const TARGET_UTC_MS = berlinInstantFromWall(2025, 9, 10, 0, 0, 0);
 
 // Utility: Berlin-Offset ermitteln (DST-sicher)
