@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modulprioritäten – eingereicht</title>
+  <meta name="color-scheme" content="light only">
+  <meta name="theme-color" content="#f5efe6">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Du kannst weiterhin deine bestehende styles.css einbinden -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Seitenspezifische Styles -->
+  <link rel="stylesheet" href="success.css">
+</head>
+<body>
+  <!-- Partikel-Canvas (Hintergrund) -->
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <main class="success-shell">
+    <section class="success-card" role="region" aria-labelledby="success-headline">
+      <div class="blob" aria-hidden="true"></div>
+      <div class="blob-2" aria-hidden="true"></div>
+      <div class="ring" aria-hidden="true"></div>
+
+      <h1 id="success-headline">Modulprioritäten erfolgreich eingereicht!</h1>
+
+      <ol class="info-list">
+        <li>
+          Bei der automatischen Kurszuordnung werden eure Wünsche möglichst berücksichtigt; es bleiben jedoch nur Wünsche!
+        </li>
+        <li>
+          Möchtest du deine Priorisierung ändern, dann fülle die Umfrage einfach erneut aus.
+        </li>
+      </ol>
+
+      <a id="retryBtn" class="btn-primary" href="#" rel="noopener">Erneut ausfüllen</a>
+
+      <p class="hint">Tipp: Du kannst diesen Link teilen, falls mehrere Personen ihre Priorisierung anpassen möchten.</p>
+    </section>
+  </main>
+
+  <script src="success.js"></script>
+</body>
+</html>

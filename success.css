@@ -1,0 +1,134 @@
+/* Erbt Farben/Typo aus styles.css; ergänzt nur Seitenspezifisches */
+:root{
+  --tap: 44px;
+}
+
+html, body{
+  height: 100%;
+  margin: 0;
+  background:
+    radial-gradient(1400px 900px at 15% 10%, var(--bg-2), transparent 60%),
+    radial-gradient(1200px 700px at 85% 20%, var(--bg-3), transparent 60%),
+    radial-gradient(1200px 700px at 50% 100%, #f8f2e8, transparent 60%),
+    var(--bg-1);
+  overflow: hidden;
+}
+
+#particles{
+  position: fixed;
+  inset: 0;
+  z-index: 0;         /* hinter der Karte */
+}
+
+.success-shell{
+  position: relative;
+  z-index: 1;         /* über den Partikeln */
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+}
+
+.success-card{
+  position: relative;
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.58);
+  border: 1px solid rgba(90,127,113,0.15);
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(38,50,56,0.12);
+  padding: clamp(20px, 4vw, 48px);
+  width: min(960px, 92vw);
+  text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.success-card .blob,
+.success-card .blob-2,
+.success-card .ring{
+  position: absolute;
+  filter: blur(30px);
+  opacity: .35;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.success-card .blob{
+  width: 420px; height: 420px;
+  left: -120px; top: -160px;
+  background: radial-gradient(closest-side, #9cc8b6, transparent 70%);
+  transform: rotate(6deg);
+  animation: float1 22s ease-in-out infinite;
+}
+.success-card .blob-2{
+  width: 420px; height: 420px;
+  right: -120px; bottom: -140px;
+  background: radial-gradient(closest-side, #b9a2d2, transparent 70%);
+  transform: rotate(-5deg);
+  animation: float2 26s ease-in-out infinite;
+}
+.success-card .ring{
+  width: 560px; height: 560px;
+  left: 50%; top: 50%; translate: -50% -50%;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 34px rgba(255,255,255,0.33),
+              inset 0 0 0 68px rgba(138,111,168,0.10);
+  animation: breathe 14s ease-in-out infinite;
+}
+
+#success-headline{
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 700;
+  font-size: clamp(28px, 6vw, 64px);
+  letter-spacing: .01em;
+  margin: 0 0 .3em 0;
+  color: var(--ink);
+}
+
+.info-list{
+  list-style: decimal;
+  margin: 0 auto clamp(14px, 3vw, 24px) auto;
+  padding: 0;
+  max-width: 60ch;
+  text-align: left;
+  font-size: clamp(14px, 2.8vw, 18px);
+  color: #4d5b57;
+}
+.info-list li{
+  margin: 0 0 .8em 1.2em;
+}
+
+.btn-primary{
+  display: inline-block;
+  margin-top: 8px;
+  padding: 14px 22px;
+  min-height: var(--tap);
+  min-width: calc(var(--tap) * 3);
+  border-radius: 16px;
+  border: 1px solid rgba(38,50,56,0.12);
+  box-shadow: 0 10px 30px rgba(38,50,56,0.10);
+  background: white;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.btn-primary:active { transform: translateY(1px); }
+
+.hint{
+  margin-top: 10px;
+  font-size: 12px;
+  color: #5f6467;
+}
+
+/* Mobile Performance/Feinschliff */
+@media (max-width: 480px){
+  html, body { overflow: auto; }
+  .success-card{ padding: 22px; border-radius: 18px; }
+  .success-card .blob, .success-card .blob-2{ filter: blur(20px); opacity: .28; }
+  .success-card .ring{ box-shadow: inset 0 0 0 26px rgba(255,255,255,0.30), inset 0 0 0 52px rgba(138,111,168,0.08); }
+}
+@media (prefers-reduced-motion: reduce){
+  * { animation: none !important; transition: none !important; }
+  .success-card .blob, .success-card .blob-2, .success-card .ring{ filter: blur(12px); opacity: .24; }
+}
