@@ -4,7 +4,7 @@
    KONFIGURATION:
    - Linkziel für den Button (z. B. zur Umfrage) hier setzen:
    ============================================= */
-const SURVEY_URL = "https://beispiel.de/deine-umfrage"; // <— HIER anpassen
+const SURVEY_URL = "https://benjino.limesurvey.net/389524?lang=de-easy"; // <— HIER anpassen
 
 // Button-Link setzen
 const retryBtn = document.getElementById('retryBtn');
